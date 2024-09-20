@@ -89,13 +89,13 @@ const CustomTabBar = ({ state, descriptors, navigation}) => {
 const getIconName = (routeName, focused) => {
   switch (routeName) {
     case 'Home':
-      return focused ? 'home' : 'home-outline';
+      return focused ? 'newspaper' : 'newspaper-outline';
     case 'Treino':
-      return focused ? 'flame' : 'flame-outline';
+      return focused ? 'barbell' : 'barbell-outline';
     case 'IMC':
-      return focused ? 'heart' : 'heart-outline';
+      return focused ? 'heart-circle' : 'heart-circle-outline';
     case 'Ficha':
-      return focused ? 'call' : 'call-outline';
+      return focused ? 'book' : 'book-outline';
     default:
       return 'home-outline'; 
   }
@@ -113,7 +113,7 @@ export function Inicio({route}) {
       <Tab.Screen name="Home" component={HomePage} options={{ headerShown: false }} />
       <Tab.Screen name="Treino" component={Treino} options={{ headerShown: false }} /> 
       <Tab.Screen name="IMC" component={IMC} options={{ headerShown: false }} />
-      <Tab.Screen name="Saude" component={fichaUsuario} options={{ headerShown: false }} />
+      <Tab.Screen name="Ficha" component={fichaUsuario} options={{ headerShown: false }} />
     </Tab.Navigator>
   )}
 export default function Rotas() {

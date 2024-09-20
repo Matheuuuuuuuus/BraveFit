@@ -132,14 +132,14 @@ const FichaUsuario = () => {
         <View style={styles.section}>
           <View style={styles.newsCard}>
             <ImageBackground
-              source={require("../../../res/img/Nba/curry.jpg")}
+              source={require("../../../res/img/bravefit/Dica/dicaas.jpg")}
               style={styles.newsImage}
             >
             </ImageBackground>
           </View>
           </View>
 
-        <FlatList
+        <FlatList 
           data={filteredData}
           renderItem={renderItem}
           keyExtractor={item => String(item.id)}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
+import { Button } from "galio-framework";
 import styles from './Style'; 
 
 export default function CalcularIMC() {
@@ -45,6 +46,8 @@ export default function CalcularIMC() {
         value={altura}
         onChangeText={setAltura}
         placeholder="Altura (m)"
+        placeholderTextColor={'#fff'}
+        color="#fff"
         style={styles.input}
       />
       <TextInput
@@ -52,10 +55,12 @@ export default function CalcularIMC() {
         value={peso}
         onChangeText={setPeso}
         placeholder="Peso (kg)"
+        placeholderTextColor={'#fff'}
+        color="#fff"
         style={styles.input}
       />
-      <Button title="Calcular" color='#89B1ED' onPress={calcularIMC} style={styles.button} />
-      <Button title="Limpar" color='#89B1ED' onPress={limparCampos} style={styles.button} />
+      <Button onPress={calcularIMC} style={styles.button}>Calcular</Button>      
+      <Button onPress={limparCampos} style={styles.button}>Limpar</Button>
       <Text style={styles.result}>{resultado}</Text>
     </View>
   );
