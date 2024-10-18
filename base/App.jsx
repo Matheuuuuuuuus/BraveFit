@@ -2,7 +2,7 @@ import Rotas from './src/components/rotas/Index';
 
 function App() {
   return (
-    <Rotas />
+    <Rotas/>
   );
 }
 export default App;

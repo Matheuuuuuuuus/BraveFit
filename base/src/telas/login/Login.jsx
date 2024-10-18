@@ -30,7 +30,7 @@ const Login = ({navigation}) =>{
           if(response.status === 200){
               setEmail('');
               setSenha('');
-              navigation.navigate('Inicio');
+              navigation.navigate('Home');
           }
           else{
               Alert.alert('Erro', 'Email ou senha incorretos por favor tente novamente')
