@@ -6,11 +6,8 @@ import styles from "./Styles";
 import axios from 'axios'
 
 
-export default function Home({ route}) {
+export default function Home({ navigation, route}) {
 
-const navigation = useNavigation()
-  
-      
   const Sidebar = ({ isOpen, onClose }) => {
     const navigation = useNavigation();
     const navigateToScreen = (screenName) => {
@@ -74,7 +71,7 @@ const navigation = useNavigation()
            
         <View style={styles.item}> 
                <View style={styles.card}>
-                  <Image source={require("../../../res/img/bravefit/nutricionista/nutricionista.jpg")} style={styles.image} />
+                  <Image source={require("../../../res/img/bravefit/noticiaBrave.png")} style={styles.image} />
                   <View style={styles.content}>
                   <TouchableOpacity onPress={()=> handleVizualizar(item.id)}>
                   <Text style={styles.title}>{item.title}</Text>
@@ -116,11 +113,11 @@ const navigation = useNavigation()
 
                  
                  <FlatList
+                 scrollEnabled={false}
                    data={data}
                    renderItem={renderItem}
                    keyExtractor={item => String(item.id)}
                    />
-                      <Text style={styles.sectionTitle}>Fisiculturismo</Text>
               </ScrollView>
           </SafeAreaView>
     );

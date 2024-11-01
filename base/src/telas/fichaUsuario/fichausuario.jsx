@@ -42,7 +42,10 @@ const Sidebar = ({ isOpen, onClose }) => {
   );
 };
 
-const FichaUsuario = () => {
+const FichaUsuario = ({route}) => {
+
+  const id_usuario = route.params.obj.id
+  console.log(id_usuario)
   const navigation = useNavigation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [data, setData] = useState([]);
@@ -52,7 +55,7 @@ const FichaUsuario = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get('http://10.0.2.2:8085/api/fichasCadastradas');
+      const response = await axios.get(`http://10.0.2.2:8085/api/fichasCadastradasUser/${id_usuario}`);
       const sortedData = response.data.sort((a, b) => a.id - b.id);
       setData(sortedData);
       setFilteredData(sortedData);
@@ -95,7 +98,10 @@ const FichaUsuario = () => {
       <View style={styles.card}>
         <TouchableOpacity onPress={() => handleVizualizar(item.id)}>
           <View style={styles.content}>
-            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.title}>{"Peso: "+ item.peso}</Text>
+            <Text style={styles.title}>{"Suplementaçao: "+ item.suplementacao}</Text>
+            <Text style={styles.title}>{"Nutricionista: "+ item.nutricionista}</Text>
+            <Text style={styles.title}>{"Objetivo: "+ item.objetivo}</Text>
           </View>
         </TouchableOpacity>
       </View>

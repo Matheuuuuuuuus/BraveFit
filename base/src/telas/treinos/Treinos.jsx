@@ -5,7 +5,7 @@ import { Text, Header } from '@rneui/themed';
 import FastImage from 'react-native-fast-image';
 import styles from "./Style";
 
-export default function Home() {
+export default function Treinos() {
   const navigation = useNavigation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 

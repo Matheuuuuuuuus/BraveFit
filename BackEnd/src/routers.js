@@ -15,6 +15,6 @@ router.get('/api/readNews', clientController.listAllNews);
 router.get('/api/readNewsID/:id', clientController.listNewsbyID);
 router.post('/api/cadastrarFicha', clientController.CadastrarFicha);
 router.get('/api/fichasCadastradas', clientController.listAllFicha);
-router.get('/api/fichasCadastradasID/:id', clientController.listbyIDFicha);
+router.get('/api/fichasCadastradasUser/:id_usuario', clientController.listbyIDFichaUser);
 
 module.exports = router;

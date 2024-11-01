@@ -1,8 +1,9 @@
-import Rotas from './src/components/rotas/Index';
+import StartNavigator from './src/components/rotas/StartNavigator';
+import Rotas from './src/components/rotas/StartNavigator';
 
 function App() {
   return (
-    <Rotas/>
+    <StartNavigator/>
   );
 }
 export default App;

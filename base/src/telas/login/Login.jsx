@@ -28,9 +28,15 @@ const Login = ({navigation}) =>{
 
           //Verificar se o login foi efetuado com sucesso
           if(response.status === 200){
+            const userData = {
+              id:response.data.id,
+              nome:response.data.nome,
+              email:response.data.email,
+            }
               setEmail('');
               setSenha('');
-              navigation.navigate('Home');
+              navigation.navigate('Inicio', {userData});
+
           }
           else{
               Alert.alert('Erro', 'Email ou senha incorretos por favor tente novamente')

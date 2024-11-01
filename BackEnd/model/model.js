@@ -94,16 +94,15 @@ const userModel = {
             .catch(erro => console.log(erro));
         return result
     },
-    CreateFicha:  async (peso, suplementacao, nutricionista, objetivo) => {
+    CreateFicha:  async (id,peso, suplementacao, nutricionista, objetivo, id_usuario) => {
         const result = await connection.query(
-          'INSERT INTO ficha (peso, suplementacao, nutricionista, objetivo) VALUES (?, ?, ?, ?)',
-          [peso, suplementacao, nutricionista, objetivo]
+          'INSERT INTO ficha (ID, peso, suplementacao, nutricionista, objetivo, id_usuario) VALUES (?, ?, ?, ?, ?, ?)',
+          [id,peso, suplementacao, nutricionista, objetivo, id_usuario]
         );
         return result;
       },
-    getByIdFicha: async (id) => {
-        console.log(id);
-        const [result] = await connection.query("SELECT peso, suplementacao, nutricionista, objetivo id FROM ficha WHERE id =?", [id])
+    getFichasUser: async (id_usuario) => {
+        const [result] = await connection.query("SELECT * FROM ficha WHERE id_usuario =?", [id_usuario])
             .catch(erro => console.log(erro));
         return result
     },

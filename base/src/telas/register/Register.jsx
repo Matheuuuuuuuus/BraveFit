@@ -20,22 +20,24 @@ export default function Register ({navigation}) {
 
     //validar que os campos não são vazios
     const handleCadastrar = async () => {
-        if (!formData.nome || !formData.email || !formData.senha ) {
-            setMensagem('*Todos os campos são obrigatórios*')
-            return;
-        }
-        if (!formData.email.includes('@')) {
-          setMensagem('Email inválido. Certifique-se de incluir o símbolo "@"');
+      if (!formData.nome || !formData.email || !formData.senha) {
+        Alert.alert('Todos os campos são obrigatórios!');
           return;
-        }
-
-        console.log(formData);
-
+      }
+      
+      // Validação de email com regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        Alert.alert('Email inválido. Certifique-se de que está no formato correto!');
+          return;
+      }
+  
+      console.log(formData);
         //envio de informações para a API cadastrar no banco de dados
         try {
             await axios.post('http://10.0.2.2:8085/api/registerUser', formData);
             Alert.alert('Cadastro realizado com sucesso');
-            navigation.navigate("HomeLogin");
+            navigation.navigate("Login");
         } catch (error) {
             console.log(error)
             if (error.response.status === 401) {
@@ -43,7 +45,7 @@ export default function Register ({navigation}) {
             }
             else {
                 console.log(error);
-                setMensagem('Ocorreu um erro ao cadastrar o usuário. Tente novamente!!!')
+                Alert.alert('Ocorreu um erro ao cadastrar o usuário. Tente novamente!!!')
             }
         }
     };

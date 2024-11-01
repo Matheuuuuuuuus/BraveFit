@@ -6,7 +6,9 @@ import { Button } from 'galio-framework';
 import axios from 'axios';
 import styles from './Style';
 
-export default function CadastrarReceitas({ navigation, route }) {
+export default function CadastrarFicha({ navigation, route }) {
+  const id_usuario = route.params.obj.id
+  console.log(id_usuario)
   const [peso, setPeso] = useState('');
   const [suplementacao, setsuplementacao] = useState('');
   const [nutricionista, setnutricionista] = useState('');
@@ -20,12 +22,16 @@ export default function CadastrarReceitas({ navigation, route }) {
     }
 
     try {
-      const response = await axios.post('http://10.0.2.2:8085/api/cadastrarFicha', {
-        peso,
-        suplementacao,
-        nutricionista,
-        objetivo: objetivo
-      });
+      const data = {
+        ID:'',
+        peso: peso,
+        suplementacao: suplementacao,
+        nutricionista: nutricionista,
+        objetivo: objetivo,
+        id_usuario: id_usuario,
+      }
+      console.log(data)
+      const response = await axios.post('http://10.0.2.2:8085/api/cadastrarFicha', data);
       
       if (response.status === 201) {
         Alert.alert('Sucesso', 'Ficha cadastrada com sucesso!');
@@ -35,6 +41,7 @@ export default function CadastrarReceitas({ navigation, route }) {
         setobjetivo('');
       }
     } catch (error) {
+      console.log(error)
       Alert.alert('Erro', 'Erro ao cadastrar a Ficha.');
     }
   };

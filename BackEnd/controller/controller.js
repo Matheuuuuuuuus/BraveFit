@@ -121,7 +121,7 @@ const userController = {
 
 
             if(sql != null){
-                res.status(200).json({msg:"Email e senha validados com sucesso!!!"});
+                res.status(200).json(sql[0]);
             }
             else{
                 res.status(401).json({msg:"Email ou senha incorretos"});
@@ -200,9 +200,9 @@ const userController = {
     },
     CadastrarFicha: async (req, res) => {
         try {
-          const { peso, suplementacao, nutricionista, objetivo} = req.body;
+          const { ID, peso, suplementacao, nutricionista, objetivo, id_usuario} = req.body;
                
-          await clientController.CreateFicha(peso, suplementacao, nutricionista, objetivo);
+          await clientController.CreateFicha(ID,peso, suplementacao, nutricionista, objetivo, id_usuario);
           res.status(201).json({ message: 'Ficha cadastrada com sucesso!' });
 
         } catch (error) {
@@ -211,9 +211,9 @@ const userController = {
         }
       },
 
-      listbyIDFicha: async (req, res) => {
+      listbyIDFichaUser: async (req, res) => {
         try {
-            const sql = await clientController.getByIdFicha(req.params.id);
+            const sql = await clientController.getFichasUser(req.params.id_usuario);
 
             if(sql.length> 0)
             {
