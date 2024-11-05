@@ -2,41 +2,52 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
     backgroundColor: '#27438C',
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingHorizontal: 20,
   },
   containerImg: {
-    height: '5%',
+    marginTop: 20,
     alignItems: "center",
   },
   imgLogo: {
-    resizeMode: "contain",
     width: 200,
     height: 200,
+    resizeMode: "contain",
   },
   title: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 20,
-      color: 'white'
+    fontSize: 28, 
+    fontWeight: 'bold',
+    marginBottom: 30, 
+    color: '#FFFFFF',
+    textAlign: 'center', 
   },
   input: {
-      width: '100%',
-      borderWidth: 1,
-      borderColor: 'white',
-      borderRadius: 5,
-      padding: 10,
-      marginBottom: 10,
-      color: 'white',
-      backgroundColor: '#27438C',
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#FFFFFF', 
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 15,
+    color: '#FFFFFF',
+    backgroundColor: '#4B6FBF',
+    fontSize: 16, 
   },
   buttonCont: {
-    backgroundColor: '#537BE2',
-    borderColor: 'white',
-    borderWidth: 1,
+    fontWeight: "bold",
+        fontSize: 17,
+        color: 'white',
+        backgroundColor: '#4B6FBF',
+        borderColor: 'white',
+        borderWidth: 1,
+
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontWeight: '600', 
+    fontSize: 18, 
   },
 });
 

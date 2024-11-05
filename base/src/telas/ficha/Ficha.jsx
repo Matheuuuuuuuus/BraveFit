@@ -126,6 +126,7 @@ export default function CadastrarFicha({ navigation, route }) {
       
       <View style={styles.cadastroContainer}>
         <TextInput
+          keyboardType='numeric'
           style={styles.input}
           placeholder="Peso:"
           placeholderTextColor={'#fff'}

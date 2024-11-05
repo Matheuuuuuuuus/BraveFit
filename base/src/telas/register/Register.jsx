@@ -32,7 +32,6 @@ export default function Register ({navigation}) {
           return;
       }
   
-      console.log(formData);
         //envio de informações para a API cadastrar no banco de dados
         try {
             await axios.post('http://10.0.2.2:8085/api/registerUser', formData);
@@ -76,17 +75,13 @@ export default function Register ({navigation}) {
             placeholder="Senha:"
             onChangeText={(text)=>
             handleInputChange('senha', text)}
+            secureTextEntry
             value={formData.senha} 
             color="white"
                    
             /> 
 
           <View style={styles.botao}>
-            
-            <Button style={styles.buttonReg} onPress={() => 
-              navigation.navigate('Login')}>
-                <Text style={styles.buttonText}>ENTRAR</Text>
-              </Button>
 
             <Button color='red' onPress={handleCadastrar} style={styles.buttonCont}>
                <Text style={styles.buttonText}>CADASTRAR</Text>

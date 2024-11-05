@@ -9,6 +9,7 @@ import Ficha from '../../telas/ficha/Ficha';
 import Gluteo from '../../telas/gluteo/Gluteo';
 import Ombro from '../../telas/ombro/Ombro';
 import HomeLogin from '../../telas/homeLogin/HomeLogin';
+import Home from '../../telas/home/HomePage.jsx';
 import IMC from '../../telas/imc/IMC';
 import Abdomen from '../../telas/abdomen/Abdomen';
 import Login from '../../telas/login/Login';
@@ -22,6 +23,10 @@ import Triceps from '../../telas/triceps/Triceps';
 import Register from '../../telas/register/Register';
 import Suplementos from '../../telas/saude/Suplementos';
 import  Inicio  from './tabNavigator.jsx';
+import VizualizacaoFicha from '../../telas/fichaUsuario/VizualizacaoFicha.jsx';
+import Noticias from '../../telas/home/noticia.jsx';
+
+
 
 const Stack = createStackNavigator();
 
@@ -55,6 +60,9 @@ export default function StartNavigator() {
           <Stack.Screen name="Treinos" component={Treinos} />
           <Stack.Screen name="Triceps" component={Triceps} />
           <Stack.Screen name="Suplementos" component={Suplementos} />
+          <Stack.Screen name="HomePage" component={Home} />
+          <Stack.Screen name="VizualizacaoFicha" component={VizualizacaoFicha} />
+          <Stack.Screen name="Noticias" component={Noticias} />
           
            
         </Stack.Navigator>

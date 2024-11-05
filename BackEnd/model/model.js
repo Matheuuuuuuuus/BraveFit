@@ -55,7 +55,6 @@ const userModel = {
             return erro
         }
 
-
     },
     registerUser: async(id,nome,email,senha)=>{
         const hashsenha = await bcrypt.hash(senha, salt);

@@ -107,7 +107,7 @@ export default function Home({ navigation, route}) {
                  {/* Notícias */}
                 <View>
                     <View>
-                      <Text style={styles.sectionTitle}>Noticias</Text>
+                      <Text style={styles.sectionTitle}>Notícias</Text>
                     </View>  
                 </View>
 

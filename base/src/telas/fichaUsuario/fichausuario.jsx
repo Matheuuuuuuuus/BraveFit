@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, SafeAreaView, ScrollView, Image, ImageBackground, TouchableOpacity, FlatList, TextInput, Animated } from 'react-native';
+import { View, SafeAreaView, ScrollView, ImageBackground, TouchableOpacity, FlatList, TextInput, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Text, Header } from '@rneui/themed';
 import styles from "./Style";
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
 
 const Sidebar = ({ isOpen, onClose }) => {
-  
   const [translateX] = useState(new Animated.Value(300));
 
   useEffect(() => {
@@ -43,9 +41,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 };
 
 const FichaUsuario = ({route}) => {
-
-  const id_usuario = route.params.obj.id
-  console.log(id_usuario)
+  const id_usuario = route.params.obj.id;
   const navigation = useNavigation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [data, setData] = useState([]);
@@ -62,11 +58,18 @@ const FichaUsuario = ({route}) => {
     } catch (error) {
       console.error(error);
     }
-    
-  }, []);
+  }, [id_usuario]); // Certifique-se de adicionar a dependência aqui
 
   useEffect(() => {
-    fetchData();
+    fetchData(); // Chama fetchData quando o componente é montado
+
+    // Define o intervalo para recarregar os dados a cada 10 segundos
+    const intervalId = setInterval(() => {
+      fetchData(); // Chama a função de buscar dados
+    }, 10000); // 10000 milissegundos = 10 segundos
+
+    // Limpa o intervalo quando o componente é desmontado
+    return () => clearInterval(intervalId);
   }, [fetchData]);
 
   const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
@@ -90,7 +93,7 @@ const FichaUsuario = ({route}) => {
   }, [data]);
 
   const handleVizualizar = (id) => {
-    navigation.navigate('fichaVisualização', { id });
+    navigation.navigate('VizualizacaoFicha', { id });
   };
 
   const renderItem = ({ item }) => (
@@ -98,7 +101,7 @@ const FichaUsuario = ({route}) => {
       <View style={styles.card}>
         <TouchableOpacity onPress={() => handleVizualizar(item.id)}>
           <View style={styles.content}>
-            <Text style={styles.title}>{"Peso: "+ item.peso}</Text>
+            <Text style={styles.title}>{"Peso: "+ item.peso +"kg"}</Text>
             <Text style={styles.title}>{"Suplementaçao: "+ item.suplementacao}</Text>
             <Text style={styles.title}>{"Nutricionista: "+ item.nutricionista}</Text>
             <Text style={styles.title}>{"Objetivo: "+ item.objetivo}</Text>
@@ -110,7 +113,7 @@ const FichaUsuario = ({route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-   <Header
+      <Header
         backgroundColor="#27438C"
         barStyle="light-content"
         centerComponent={{
@@ -138,12 +141,11 @@ const FichaUsuario = ({route}) => {
         <View style={styles.section}>
           <View style={styles.newsCard}>
             <ImageBackground
-              source={require("../../../res/img/bravefit/Dica/dicaas.jpg")}
+              source={require("../../../res/img/bravefit/suaficha.png")}
               style={styles.newsImage}
-            >
-            </ImageBackground>
+            />
           </View>
-          </View>
+        </View>
 
         <FlatList 
           data={filteredData}
