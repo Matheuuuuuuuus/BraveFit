@@ -46,58 +46,6 @@ export default function CadastrarFicha({ navigation, route }) {
     }
   };
 
-  // const handleImagePick = () => {
-  //   const options = {
-  //     title: 'Selecione uma imagem',
-  //     storageOptions: {
-  //       skipBackup: true,
-  //       path: 'images',
-  //     },
-  //   };
-
-  //   ImagePicker.showImagePicker(options, (response) => {
-  //     if (response.didCancel) {
-  //       console.log('Usuário cancelou a seleção de imagem');
-  //     } else if (response.error) {
-  //       console.log('Erro ao selecionar a imagem: ', response.error);
-  //     } else {
-  //       setImageUri(response.uri);
-  //     }
-  //   });
-  // };
-
-  // const uploadImage = async () => {
-  //   if (!imageUri) {
-  //     Alert.alert('Erro', 'Nenhuma imagem selecionada.');
-  //     return;
-  //   }
-
-  //   const form = new FormData();
-  //   form.append('text', 'description');
-  //   const imageCover = {
-  //     name: 'image.jpg',
-  //     uri: imageUri,
-  //     type: 'image/jpeg',
-  //   };
-
-  //   form.append('imageCover', imageCover);
-
-  //   try {
-  //     const response = await axios.post('http://10.0.2.2:8085/api/uploadImage', form, {
-  //       headers: {
-  //         'Content-Type': 'multipart/form-data',
-  //       },
-  //     });
-
-  //     if (response.status === 200) {
-  //       Alert.alert('Sucesso', 'Imagem enviada com sucesso!');
-  //       navigation.navigate('AppTabNavigator', { screen: 'HomePage' });
-  //     }
-  //   } catch (error) {
-  //     Alert.alert('Erro', 'Erro ao enviar a imagem.');
-  //   }
-  // };
-
   return (
     <SafeAreaView style={styles.container}>
       <Header

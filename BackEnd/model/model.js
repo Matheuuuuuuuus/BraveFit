@@ -3,11 +3,11 @@ const bcrypt = require("bcrypt");
 const salt = 10;
 
 const userModel = {
-    getAllUsers: async () =>{
-        const [result] = await connection.query("SELECT * FROM cadastro_senai")
-        .catch(erro => console.log(erro));
-        return result
-    },
+    // getAllUsers: async () =>{
+    //     const [result] = await connection.query("SELECT * FROM cadastro_senai")
+    //     .catch(erro => console.log(erro));
+    //     return result
+    // },
 
     getByID: async (id) =>{
         const [result] = await connection.query("SELECT * FROM cadastro_usuarios WHERE id =?",[id])
@@ -15,17 +15,17 @@ const userModel = {
         return result
     },
 
-    registerUserr: async (id, nome, sobrenome, idade) =>{
-        const [result] = await connection.query("INSERT INTO cadastro_usuarios values(?,?,?,?)",[id,nome,sobrenome,idade])
-        .catch(erro => console.log(erro));
-        return result
-    },
+    // registerUserr: async (id, nome, sobrenome, idade) =>{
+    //     const [result] = await connection.query("INSERT INTO cadastro_usuarios values(?,?,?,?)",[id,nome,sobrenome,idade])
+    //     .catch(erro => console.log(erro));
+    //     return result
+    // },
 
-    deleteUser: async (id)=>{
-        const [result] = await connection.query("DELETE FROM cadastro_senai WHERE id=? ", [id])
-        .catch(erro => console.log(erro));
-        return result
-    },
+    // deleteUser: async (id)=>{
+    //     const [result] = await connection.query("DELETE FROM cadastro_senai WHERE id=? ", [id])
+    //     .catch(erro => console.log(erro));
+    //     return result
+    // },
     //Model para login
     getByEmail: async (email)=>{
         const [result] = await connection.query("SELECT * FROM cadastro_usuarios WHERE email=?", [email])
@@ -62,11 +62,7 @@ const userModel = {
         .catch(erro => console.log(erro));
         return result;
     },
-    updateUser: async(id, email, senha)=>{
-        const [result] = await connection.query("UPDATE cadastro_usuarios SET email=?, senha=?, WHERE id=?",[id, email, senha])
-        .catch(erro => console.log(erro));
-        return result;
-    },
+
      //reset senha aluno
     resetByEmail: async(email) =>{
         const [result] = await connection.query("SELECT * FROM cadastro_usuarios WHERE email=?", [email])
@@ -75,8 +71,9 @@ const userModel = {
     },
     //update the password
     updatePassword: async(email,senha)=>{
+        const hashpassword = await bcrypt.hash(senha, salt);
         const result = await connection.query("UPDATE cadastro_usuarios SET senha=? WHERE email=?",
-        [senha, email])
+        [hashpassword, email])
         .catch(error => console.log(error))
         return result;
     },
@@ -106,10 +103,31 @@ const userModel = {
         return result
     },
 
+    getFichaById: async (id) => {
+        try {
+            const [result] = await connection.query("SELECT * FROM ficha WHERE id_usuario = ?", [id]);
+
+            console.log(result);
+            
+            if (result.length === 0) {
+                return null;
+            }
+            return result[0];
+        } catch (erro) {
+            console.error('Erro ao buscar ficha por ID:', erro);
+            throw erro;
+        }
+    },
+
     getAllFicha: async () => {
         const [result] = await connection.query("SELECT peso, suplementacao, nutricionista, objetivo id FROM ficha")
             .catch(erro => console.log(erro));
         return result
+    },
+    deleteficha: async (id) => {
+        const [result] = await connection.query("DELETE FROM ficha WHERE id_usuario = ?", [id])
+            .catch(erro => console.log(erro));
+        return result;
     },
 
 };

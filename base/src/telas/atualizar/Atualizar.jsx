@@ -54,7 +54,7 @@ export default function Home({navigation}) {
             }
 
             // Fazer a solicitação para trocar a senha
-            const response = await axios.post('http://10.0.2.2:8085/api/resetpassword', data);
+            const response = await axios.put('http://10.0.2.2:8085/api/resetpassword', data);
 
             if (response.status === 200) {
                 navigation.navigate("Login");

@@ -10,11 +10,12 @@ router.get("/", clientController.getRoot); //rota raiz
 router.post("/api/registerUser", clientController.registerbravefit); //Cadastrar um novo usuario
 router.post("/api/validate", clientController.login); //validar o login 
 router.post("/api/reset", clientController.getEmailReset);//verificar o email de reset
-router.post("/api/resetpassword", clientController.resetPassword);//resetar a senha
+router.put("/api/resetpassword", clientController.resetPassword);//resetar a senha
 router.get('/api/readNews', clientController.listAllNews);
 router.get('/api/readNewsID/:id', clientController.listNewsbyID);
 router.post('/api/cadastrarFicha', clientController.CadastrarFicha);
 router.get('/api/fichasCadastradas', clientController.listAllFicha);
 router.get('/api/fichasCadastradasUser/:id_usuario', clientController.listbyIDFichaUser);
+router.delete('/api/deleteficha/:id', clientController.deleteFicha)
 
 module.exports = router;

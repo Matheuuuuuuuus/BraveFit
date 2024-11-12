@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { View, SafeAreaView, ScrollView, ImageBackground, TouchableOpacity, FlatList, TextInput, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Alert } from "react-native";
 import { Text, Header } from '@rneui/themed';
 import styles from "./Style";
 import axios from 'axios';
@@ -40,7 +41,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   );
 };
 
-const FichaUsuario = ({route}) => {
+const FichaUsuario = ({ route }) => {
   const id_usuario = route.params.obj.id;
   const navigation = useNavigation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -56,12 +57,12 @@ const FichaUsuario = ({route}) => {
       setData(sortedData);
       setFilteredData(sortedData);
     } catch (error) {
-      console.error(error);
+      //return error
     }
-  }, [id_usuario]); // Certifique-se de adicionar a dependência aqui
+  }, [id_usuario]); //adicionar a dependência aqui
 
   useEffect(() => {
-    fetchData(); // Chama fetchData quando o componente é montado
+    fetchData(); // chama fetchData quando o componente é montado
 
     // Define o intervalo para recarregar os dados a cada 10 segundos
     const intervalId = setInterval(() => {
@@ -78,15 +79,48 @@ const FichaUsuario = ({route}) => {
   const toggleSearch = () => {
     setIsSearchVisible(prev => !prev);
     if (isSearchVisible) {
-      setSearchQuery(''); 
-      setFilteredData(data); 
+      setSearchQuery('');
+      setFilteredData(data);
     }
+  };
+  const deleteficha = (id) => {
+    Alert.alert(
+      "Confirmar Exclusão",
+      "Você tem certeza que deseja deletar esta receita?",
+      [
+        {
+          text: "cancelar",
+          onPress: () => console.log("Exclusão cancelada"),
+          style: "cancel"
+        },
+        {
+          text: "Sim",
+          onPress: async () => {
+            try {
+
+              console.log("idddddddddddddddd")
+              console.log(id_usuario);
+              const res = await axios.delete(`http://10.0.2.2:8085/api/deleteficha/${id_usuario}`);
+
+              if (res.status === 200) {
+                setData(currentData => currentData.filter(recipe => recipe.id !== id));
+                setFilteredData(currentData => currentData.filter(recipe => recipe.id !== id));
+                Alert.alert("Ficha deletada com sucesso!");
+              }
+            } catch (err) {
+              return err;
+            }
+          }
+        }
+      ],
+      { cancelable: false }
+    );
   };
 
   const handleSearch = useCallback((query) => {
     setSearchQuery(query);
     if (query === '') {
-      setFilteredData(data); 
+      setFilteredData(data);
     } else {
       setFilteredData(data.filter(item => item.title.toLowerCase().includes(query.toLowerCase())));
     }
@@ -101,10 +135,13 @@ const FichaUsuario = ({route}) => {
       <View style={styles.card}>
         <TouchableOpacity onPress={() => handleVizualizar(item.id)}>
           <View style={styles.content}>
-            <Text style={styles.title}>{"Peso: "+ item.peso +"kg"}</Text>
-            <Text style={styles.title}>{"Suplementaçao: "+ item.suplementacao}</Text>
-            <Text style={styles.title}>{"Nutricionista: "+ item.nutricionista}</Text>
-            <Text style={styles.title}>{"Objetivo: "+ item.objetivo}</Text>
+            <Text style={styles.title}>{"Peso: " + item.peso + "kg"}</Text>
+            <Text style={styles.title}>{"Suplementaçao: " + item.suplementacao}</Text>
+            <Text style={styles.title}>{"Nutricionista: " + item.nutricionista}</Text>
+            <Text style={styles.title}>{"Objetivo: " + item.objetivo}</Text>
+            <TouchableOpacity onPress={() => deleteficha(item.id)} style={styles.iconWrapper}>
+              <Text>deletar</Text>
+            </TouchableOpacity>
           </View>
         </TouchableOpacity>
       </View>
@@ -147,7 +184,7 @@ const FichaUsuario = ({route}) => {
           </View>
         </View>
 
-        <FlatList 
+        <FlatList
           data={filteredData}
           renderItem={renderItem}
           keyExtractor={item => String(item.id)}
