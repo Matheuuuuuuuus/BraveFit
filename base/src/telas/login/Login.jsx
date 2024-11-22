@@ -9,6 +9,8 @@ const Login = ({navigation}) =>{
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
+  
+
   const handleLogin = async () => {
       try{
           //Verificar se os campos foram preenchidos

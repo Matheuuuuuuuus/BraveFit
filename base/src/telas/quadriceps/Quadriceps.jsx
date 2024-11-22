@@ -1,7 +1,6 @@
 import React from "react";
 import { View, SafeAreaView, ScrollView, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 import { Text, Header } from '@rneui/themed';
 import styles from "./Styles";
 

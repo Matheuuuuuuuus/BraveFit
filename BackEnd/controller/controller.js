@@ -222,7 +222,7 @@ const userController = {
             }
         }
         catch (error) {
-            res.status(500).json({ error: "Erro ao obter a lista de receitas" })
+            res.status(500).json({ error: "Erro ao obter a lista de fichas" })
         }
     },
     listAllFicha: async (req, res) => {
@@ -236,11 +236,10 @@ const userController = {
         }
     },
     deleteFicha: async (req, res) => {
-        console.log(req.params.id);
         try {
             const ficha = await clientController.getFichaById(req.params.id);
 
-            console.log(ficha);
+            console.log(ficha)
 
             if (ficha === null) {
                 res.status(404).json({ msg: "ficha não encontrada." });

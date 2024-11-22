@@ -11,7 +11,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.mainContent}>
         {/* Imagem do logotipo da BraveFit */}
         <Image
-          source={require("../../../res/img/bravefit/logobravefit.png")} // Caminho da imagem do logotipo
+          source={require("../../../res/img/bravefit/logobravefit.png")}
           style={styles.imageLogo} // Aplica estilos à imagem
         />
         <View style={styles.textContainer}>

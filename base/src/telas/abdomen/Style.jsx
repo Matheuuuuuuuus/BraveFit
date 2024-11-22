@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
       scrollview: {
         flex: 1,
+        backgroundColor: 'black'
       },
         card: {
           backgroundColor: '#537BE2',
@@ -14,9 +15,9 @@ const styles = StyleSheet.create({
           borderColor: 'black',
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8,
-          height: 310,
+          height: 300,
           width: '100%',
-          resizeMode: 'contain',
+          resizeMode: 'cover',
         },
         content: {
           padding: 16,
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
         titleContent: {
           fontSize: 20,
           fontWeight: 'bold',
-          marginBottom: 10,
+          margin: 10,
           color:'white',
 
         },
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
         titleCard: {
           fontSize: 25,
           fontWeight: 'bold',
-          marginBottom: 10,
+          marginBottom: 8,
           color:'white',
 
         },

@@ -53,6 +53,7 @@ const FichaUsuario = ({ route }) => {
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(`http://10.0.2.2:8085/api/fichasCadastradasUser/${id_usuario}`);
+      
       const sortedData = response.data.sort((a, b) => a.id - b.id);
       setData(sortedData);
       setFilteredData(sortedData);
@@ -86,7 +87,7 @@ const FichaUsuario = ({ route }) => {
   const deleteficha = (id) => {
     Alert.alert(
       "Confirmar Exclusão",
-      "Você tem certeza que deseja deletar esta receita?",
+      "Você tem certeza que deseja deletar esta ficha?",
       [
         {
           text: "cancelar",
@@ -98,8 +99,8 @@ const FichaUsuario = ({ route }) => {
           onPress: async () => {
             try {
 
-              console.log("idddddddddddddddd")
-              console.log(id_usuario);
+              //console.log("idddddddddddddddd")
+              //console.log(id_usuario);
               const res = await axios.delete(`http://10.0.2.2:8085/api/deleteficha/${id_usuario}`);
 
               if (res.status === 200) {
@@ -165,7 +166,7 @@ const FichaUsuario = ({ route }) => {
       />
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
       <ScrollView>
-        {isSearchVisible && (
+        {/* {isSearchVisible && (
           <View style={styles.searchContainer}>
             <TextInput
               style={styles.searchInput}
@@ -174,7 +175,7 @@ const FichaUsuario = ({ route }) => {
               onChangeText={handleSearch}
             />
           </View>
-        )}
+        )} */}
         <View style={styles.section}>
           <View style={styles.newsCard}>
             <ImageBackground

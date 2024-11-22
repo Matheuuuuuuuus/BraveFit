@@ -105,9 +105,9 @@ const userModel = {
 
     getFichaById: async (id) => {
         try {
-            const [result] = await connection.query("SELECT * FROM ficha WHERE id_usuario = ?", [id]);
+            const [result] = await connection.query("SELECT * FROM ficha WHERE id = ?", [id]);
 
-            console.log(result);
+            console.log(result)
             
             if (result.length === 0) {
                 return null;
@@ -125,7 +125,7 @@ const userModel = {
         return result
     },
     deleteficha: async (id) => {
-        const [result] = await connection.query("DELETE FROM ficha WHERE id_usuario = ?", [id])
+        const [result] = await connection.query("DELETE FROM ficha WHERE id = ?", [id])
             .catch(erro => console.log(erro));
         return result;
     },

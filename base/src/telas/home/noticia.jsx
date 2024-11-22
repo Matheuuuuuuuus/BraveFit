@@ -50,7 +50,7 @@ export default function Noticias({navigation,route}) {
         backgroundColor="#27438C"
         barStyle="light-content"
         centerComponent={{
-          text: 'Noticias',
+          text: 'Notícias',
           style: { color: "#fff", fontSize: 20, fontWeight: "bold" },
         }}
         leftComponent={{
