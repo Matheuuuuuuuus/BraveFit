@@ -39,6 +39,7 @@ export default function CadastrarFicha({ navigation, route }) {
         setsuplementacao('');
         setnutricionista('');
         setobjetivo('');
+        navigation.navigate('fichaUsuario')
       }
     } catch (error) {
       console.log(error)

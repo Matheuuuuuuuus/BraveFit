@@ -9,15 +9,12 @@ const HomeScreen = ({ navigation }) => {
     // SafeAreaView garante que o conteúdo não fique coberto por áreas como a barra de status
     <SafeAreaView style={styles.container}>
       <View style={styles.mainContent}>
-        {/* Imagem do logotipo da BraveFit */}
         <Image
           source={require("../../../res/img/bravefit/logobravefit.png")}
-          style={styles.imageLogo} // Aplica estilos à imagem
+          style={styles.imageLogo} 
         />
         <View style={styles.textContainer}>
-          {/* Nome do aplicativo */}
           <Text style={styles.textLogo}>BRAVEFIT</Text>
-          {/* Descrição do aplicativo */}
           <Text style={styles.descriptionLogo}>"Seu guia para a força e sucesso"</Text>
         </View>
       </View>
