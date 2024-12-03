@@ -139,7 +139,7 @@ const userController = {
                 res.status(200).json(sql)
             }
             else {
-                console.log("aqui");
+                //console.log("aqui");
                 res.status(401).json({ msg: "Não existe registro no banco com este id" })
             }
         }
@@ -147,6 +147,7 @@ const userController = {
             res.status(500).json({ error: "Erro ao obter a lista de fichas" })
         }
     },
+    //listar todas as fichas
     listAllFicha: async (req, res) => {
         try {
             const clients = await clientController.getAllFicha();
@@ -160,6 +161,7 @@ const userController = {
             res.status(500).json({ error: "Erro ao obter a lista de fichas" })
         }
     },
+    //deletar ficha
     deleteFicha: async (req, res) => {
         try {
             const ficha = await clientController.getFichaById(req.params.id);

@@ -222,7 +222,6 @@ const FichaUsuario = ({ route }) => {
       <View style={styles.card}>
         <TouchableOpacity onPress={() => handleVizualizar(item.id)}>
           <View style={styles.content}>
-          <Text style={styles.title}>{"Peso: " + item.ID}</Text>
             <Text style={styles.title}>{"Peso: " + item.peso + "kg"}</Text>
             <Text style={styles.title}>{"Suplementação: " + item.suplementacao}</Text>
             <Text style={styles.title}>{"Nutricionista: " + item.nutricionista}</Text>
